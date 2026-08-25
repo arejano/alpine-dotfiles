@@ -1,0 +1,37 @@
+# Zellij configuration
+
+# Simple layout for development
+[[layout]]
+direction = "Vertical"
+
+[[layout.participant]]
+direction = "Horizontal"
+
+[[layout.participant]]
+direction = "Horizontal"
+
+[[layout.participant]]
+direction = "Horizontal"
+
+# Keybindings
+[keybinds]
+# Ctrl+Space to launch new pane
+ctrl_space = "NewTab"
+
+# Alt+hjkl for navigation
+alt_h = "GoToPreviousTab"
+alt_j = "GoToDownPane"
+alt_k = "GoToUpPane"
+alt_l = "GoToNextTab"
+
+# Alt+Shift+hjkl for moving panes
+alt_shift_h = "MovePaneLeft"
+alt_shift_j = "MovePaneDown"
+alt_shift_k = "MovePaneUp"
+alt_shift_l = "MovePaneRight"
+
+# Alt+Enter for floating pane
+alt_enter = "ToggleFloating"
+
+# Alt+f for fullscreen
+alt_f = "ToggleFullscreen"

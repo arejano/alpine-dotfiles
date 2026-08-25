@@ -1,0 +1,100 @@
+# theme = "fleet_dark"
+# theme = "gruvbox_light"
+# theme = "gruvbox"
+# theme = "base16_transparent"
+# theme = "zenburn"
+# theme = "amberwood"
+# theme = "meliora"
+# theme = "c_ttox"
+# theme = "autumn"
+# theme = "bogster_light"
+# theme = "adwaita-dark"
+# theme = "vim_dark_high_contrast"
+theme = "modus_vivendi_deuteranopia"
+
+[editor]
+line-number = "relative"
+cursorline = true
+cursorcolumn = true
+color-modes = true
+bufferline = "always"
+lsp.display-inlay-hints = true
+auto-completion = true
+text-width = 80
+mouse = true
+
+
+# [editor.gutters]
+# layout = ["diff", "diagnostics", "line-numbers", "spacer"]
+
+[editor.cursor-shape]
+insert = "bar"
+normal = "block"
+select = "underline"
+
+[editor.statusline]
+left = ["mode", "workspace-diagnostics", "spinner", "file-name"]
+center = ["selections", "position"]
+right = ["diagnostics", "version-control"]
+separator = "|"
+mode.normal = "N"
+mode.insert = "I"
+mode.select = "S"
+
+[editor.indent-guides]
+render = true
+
+
+[keys.normal]
+C-s = [":format", ":w!"]
+# C-s = [":w!"]
+0 = "goto_line_start"
+A-h = "jump_view_left"
+A-j = "jump_view_down"
+A-k = "jump_view_up"
+A-l = "jump_view_right"
+C-f = ":format"
+C-p = "file_picker_in_current_directory"
+C-m = ":config-open"
+A-d = ["extend_line_below", "yank", "paste_before", "normal_mode"]
+A-c = ["move_prev_word_start", "move_next_word_start", "change_selection"]
+A-y = ["extend_line_below", "yank"]
+A-s = ["save_selection"]
+S-l = ":buffer-next"
+C-q = ":reload"
+f = "find_till_char"
+
+[keys.insert]
+C-s = [":w!", "normal_mode"]
+# A-l = "move_char_right"
+# A-h = "move_char_left"
+C-f = ":format"
+C-q = ":buffer-close"
+# j = { k = "normal_mode"}
+A-d = ["extend_line_below", "yank", "paste_before"]
+A-c = [
+  "normal_mode",
+  "move_prev_word_start",
+  "move_next_word_start",
+  "change_selection",
+]
+A-y = ["extend_line_below", "yank"]
+A-s = ["save_selection"]
+
+[keys.normal."+"]
+"+" = ":run-shell-command node index.ts"
+m = ":run-shell-command echo 2"
+l = ":run-shell-command lua main.lua"
+c = ":run-shell-command cargo run"
+z = ":run-shell-command zig build"
+r = ":run-shell-command zig run src\\main.zig"
+x = ":config-reload"
+o = ":config-open"
+
+[keys.normal."L"]
+s = ":lsp-stop"
+r = ":lsp-restart"
+
+[keys.normal.space]
+"." = ":toggle lsp.display-inlay-hints"
+# "." = "file_picker_in_current_buffer_directory"

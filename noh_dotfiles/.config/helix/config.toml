@@ -1,0 +1,69 @@
+# Helix configuration
+
+# Theme
+theme = "gruvbox"
+
+# Editor settings
+[editor]
+line-number = "relative"
+cursorline = true
+color-modes = true
+true-color = true
+bufferline = "multiple"
+idle-timeout = 0
+scrolloff = 8
+completion-replace = true
+
+[editor.whitespace.render]
+space = "all"
+tab = "all"
+nbsp = "all"
+newline = "all"
+
+[editor.indent-guides]
+render = true
+character = "│"
+skip-levels = 1
+
+# LSP settings
+[editor.lsp]
+display-messages = true
+display-inlay-hints = true
+
+# Key mappings
+[editor.normal-mode]
+# Custom keybindings can be added here
+
+# Language server configurations
+[language-server.zls]
+command = "zls"
+
+[language-server.typescript-language-server]
+command = "typescript-language-server"
+args = ["--stdio"]
+
+# Language configurations
+[[language]]
+name = "zig"
+language-servers = ["zls"]
+auto-format = true
+
+[[language]]
+name = "typescript"
+language-servers = ["typescript-language-server"]
+auto-format = true
+
+[[language]]
+name = "javascript"
+language-servers = ["typescript-language-server"]
+auto-format = true
+
+[[language]]
+name = "tsx"
+language-servers = ["typescript-language-server"]
+auto-format = true
+
+[[language]]
+name = "jsx"
+language-servers = ["typescript-language-server"]
+auto-format = true

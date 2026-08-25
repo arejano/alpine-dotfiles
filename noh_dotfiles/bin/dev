@@ -1,0 +1,27 @@
+#!/bin/bash
+
+# Development environment launcher
+# Starts zellij with helix editor
+
+# Check if zellij is installed
+if ! command -v zellij &> /dev/null; then
+    echo "Error: zellij is not installed"
+    echo "Install with: pacman -S zellij (or your package manager)"
+    exit 1
+fi
+
+# Check if helix is installed
+if ! command -v hx &> /dev/null; then
+    echo "Error: helix is not installed"
+    echo "Install with: pacman -S helix (or your package manager)"
+    exit 1
+fi
+
+# Start zellij with helix
+if [ -n "$1" ]; then
+    # If directory argument provided, cd to it first
+    cd "$1" || exit 1
+    zellij --hx
+else
+    zellij --hx
+fi

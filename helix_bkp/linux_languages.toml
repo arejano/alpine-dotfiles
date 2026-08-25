@@ -1,0 +1,180 @@
+[[language]]
+name = "python"
+scope = "source.python"
+injection-regex = "python"
+shebangs = ["python"]
+roots = ["pyproject.toml", "setup.py", "poetry.lock", "pyrightconfig.json"]
+comment-token = "#"
+language-servers = [ "pylsp" ]
+# TODO: pyls needs utf-8 offsets
+indent = { tab-width = 4, unit = "    " }
+
+
+# -------- typescript -----------
+[language-server.typescript-language-server.config]
+hostInfo = "helix"
+locale = "zh-CN"
+
+[language-server.typescript-language-server.config.typescript.inlayHints]
+includeInlayEnumMemberValueHints = true
+includeInlayFunctionLikeReturnTypeHints = true
+includeInlayFunctionParameterTypeHints = true
+includeInlayParameterNameHints = "all"
+includeInlayParameterNameHintsWhenArgumentMatchesName = true
+includeInlayPropertyDeclarationTypeHints = true
+includeInlayVariableTypeHints = true
+
+[language-server.typescript-language-server.config.javascript.inlayHints]
+includeInlayEnumMemberValueHints = true
+includeInlayFunctionLikeReturnTypeHints = true
+includeInlayFunctionParameterTypeHints = true
+includeInlayParameterNameHints = "all"
+includeInlayParameterNameHintsWhenArgumentMatchesName = true
+includeInlayPropertyDeclarationTypeHints = true
+includeInlayVariableTypeHints = true
+
+
+[[language]]
+name = "css"
+file-types = ["css", "scss", "less"]
+language-servers = [
+  "vscode-css-language-server",
+  "emmet-language-server",
+  "tailwindcss-language-server",
+]
+
+[[language]]
+name = "html"
+file-types = ["html", "xhtml"]
+language-servers = [
+  "vscode-html-language-server",
+  "emmet-language-server",
+  "tailwindcss-language-server",
+]
+
+
+
+# ----------- python pyright --------------
+
+[language-server.pyright]
+command = "pyright-langserver"
+args = ["--stdio"]
+
+[language-server.pyright.config.pyright.inlayHints]
+functionReturnTypes = true
+variableTypes = true
+
+[language-server.pyright.config.python.analysis]
+autoSearchPaths = true
+diagnosticMode = "workspace"
+useLibraryCodeForTypes = true
+
+[language-server.pylsp.config]
+pylsp.plugins.rope_autoimport.enabled = true
+
+[[language]]
+name = "python"
+file-types = ["py", "pyi"]
+roots = ["pyproject.toml", "pyrightconfig.json"]
+# language-servers = ["pyright"]
+formatter = { command = "black", args = ["-"] }
+auto-format = true
+
+
+# ------------ lua --------------
+
+[[language]]
+name = "lua"
+indent = { tab-width = 4, unit = "    " }
+
+[language-server.lua-language-server]
+args = ["--locale", "zh-cn"]
+
+# 建议使用 .luarc.json 配置服务器
+
+# https://luals.github.io/wiki/configuration/
+[language-server.lua-language-server.config.Lua.hint]
+enable = true
+arrayIndex = "Enable"
+setType = true
+paramName = "All"
+paramType = true
+await = true
+
+[language-server.lua-language-server.config.Lua.workspace]
+library = [
+  "${3rd}/love2d/library",
+  "${3rd}/busted/library",
+  "${3rd}/Defold/library",
+]
+
+[language-server.lua-language-server.config.Lua.runtime]
+nonstandardSymbol = ["+=", "-=", "*=", "/=", "//=", "%=", "<<=", ">>=", "&=", "|=", "^="]
+
+special = {"import"="require"}
+
+[[grammar]]
+name = "lua"
+# source = { git = "https://github.com/MunifTanjim/tree-sitter-lua", rev = "9668709211b2e683f27f414454a8b51bf0a6bda1" }
+# source = { git = "https://github.com/erasin/tree-sitter-lua", rev = "" }
+source = { path = "/home/erasin/Development/project/tree-sitter-lua", rev = "" }
+
+# ----------- git ---------------
+
+[[language]]
+name = "git-commit"
+soft-wrap = { enable = true, wrap-at-text-width = true }
+
+# ----------- bash ---------------
+[[language]]
+name = "bash"
+file-types = [
+  "sh",
+  "bash",
+  "zsh",
+  ".bash_login",
+  ".bash_logout",
+  ".bash_profile",
+  ".bashrc",
+  ".profile",
+  ".zshenv",
+  ".zlogin",
+  ".zlogout",
+  ".zprofile",
+  ".zshrc",
+  ".bash_alias",
+  ".bash_path",
+  "host",
+]
+
+
+[[language]]
+name = "xml"
+file-types = [
+  "xml",
+  "mobileconfig",
+  "plist",
+  "xib",
+  "storyboard",
+  "svg",
+  "ncx",
+  "opf",
+  "iml",
+  "ui",
+  "xml.in",
+  "font.conf",
+  ".manifest",
+]
+
+
+
+# dev
+[[language]]
+name = "markdown"
+indent = { tab-width = 4, unit = "    " }
+file-types = ["md", "markdown"]
+roots = [".git"]
+# 设定zen-mode-like
+# text-width = 80
+# soft-wrap = { enable = true, wrap-at-text-width = true }
+
